@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { APITypeInput, CoordinatesInput, Button } from "./atoms/";
 import { Api, IFormData, IStateFormData } from '../App';
-import {validateCoordinates} from '../utils/validateCoordinates';
+import { helperFunctions } from '../helpers/helperFunctions';
 
 interface FormProps {
     setFormData: React.Dispatch<React.SetStateAction<IStateFormData | null>>
@@ -24,7 +24,7 @@ export const Form = ({ setFormData }: FormProps) => {
     const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let { lat, lon, api } = e.target as typeof e.target & IFormData;
-        if (validateCoordinates(lat.value,lon.value)) {
+        if (helperFunctions.validateCoordinates(lat.value, lon.value)) {
             setLat(lat.value);
             setLon(lon.value);
             setApi(api.value);
