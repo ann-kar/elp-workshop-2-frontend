@@ -1,0 +1,9 @@
+.WeatherData {
+  padding: 1rem;
+  border-radius: 0 0 10px 10px;
+  background-color: #f1f1f1;
+}
+
+.WeatherData > * {
+  padding: 0.7rem;
+}

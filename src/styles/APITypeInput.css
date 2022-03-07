@@ -1,0 +1,17 @@
+.APITypeInput-input {
+    display: none;
+}
+
+.APITypeInput-label {
+    padding: 1rem;
+    background-color: #F7F7F7;
+    color: #b1b1b1;
+    width: 50%;
+    min-width: 80px;
+    transition: 0.3s;
+}
+
+.APITypeInput-input:checked+label {
+    background-color: #ff7060;
+    color: #F7F7F7;
+}

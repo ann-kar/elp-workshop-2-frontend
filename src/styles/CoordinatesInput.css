@@ -1,0 +1,27 @@
+  .InputWrapper {
+      width: 80%;
+      font-size: 1.1rem;
+  }
+
+  .InputWrapper>label {
+      width: 100%;
+      display: block;
+      text-align: left;
+      margin-top: 1rem;
+  }
+
+  .InputWrapper>input {
+      border: none;
+      display: block;
+      padding: 0.5rem 0 0.3rem 0;
+      width: 100%;
+      border-bottom: 2px solid rgb(49, 49, 49);
+      background: transparent;
+  }
+
+  .InputWrapper>small {
+      display: block;
+      width: 100%;
+      font-size: 0.8rem;
+      text-align: left;
+  }
