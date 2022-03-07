@@ -1,4 +1,5 @@
 import { IWeatherData } from "../App"
+import "../styles/WeatherData.css";
 
 export const WeatherData = ({ data }: { data: IWeatherData }) => {
     return (
