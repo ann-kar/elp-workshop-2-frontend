@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 
 import { APITypeInput, CoordinatesInput, Button } from "./atoms/";
 import { Api, IStateFormData } from '../App';
-import { helperFunctions } from '../helpers/helperFunctions';
+import { validateCoordinates } from '../helpers/validateCoordinates';
+import "../styles/Form.css";
 
 interface FormProps {
     setFormData: React.Dispatch<React.SetStateAction<IStateFormData | null>>
@@ -30,7 +31,7 @@ export const Form = ({ setFormData }: FormProps) => {
     const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let { lat, lon, api } = e.target as typeof e.target & IFormData;
-        if (helperFunctions.validateCoordinates(lat.value, lon.value)) {
+        if (validateCoordinates(lat.value, lon.value)) {
             setLat(lat.value);
             setLon(lon.value);
             setApi(api.value);
