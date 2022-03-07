@@ -1,3 +1,5 @@
+import "../../styles/Button.css";
+
 export const Button = ({ id, label }: { id: string, label: string }) => (
-    <button id={id}>{label}</button>
+    <button className="Button" id={id}>{label}</button>
 )
