@@ -1,3 +1,5 @@
+import {websiteIsOpened} from "./initialDisplay";
+
 describe("form works correctly", () => {
     it("correctly handles the values of the input fields (LAT and LON) upon input", () => {
         websiteIsOpened();
@@ -21,6 +23,6 @@ describe("form works correctly", () => {
         cy.get('input#lon').type('242')
         cy.get('input[type="radio"][value="visual"]').check({ force: true });
         cy.get('button#submit').click();
-        cy.get('div.message.submit-message').contains('Please fill correctly all the fields.');
+        cy.get('small.submit-message').contains('Please fill correctly all the fields.');
     })
 });
