@@ -1,3 +1,4 @@
+import "../../styles/APITypeInput.css";
 
 interface APITypeInputProps {
     value: "openweather" | "visual",
@@ -8,8 +9,8 @@ interface APITypeInputProps {
 export const APITypeInput = ({ value, label, defaultChecked }: APITypeInputProps) => {
     return (
         <>
-            <label htmlFor={value}>use {label}</label>
-            <input type="radio" className="toggle" id={value} name={"api"} value={value} defaultChecked={defaultChecked} />
+            <input type="radio" className="APITypeInput-input" id={value} name={"api"} value={value} defaultChecked={defaultChecked} />
+            <label className="APITypeInput-label" htmlFor={value}>use {label}</label>
         </>
     )
 }
