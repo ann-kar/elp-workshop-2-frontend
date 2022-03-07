@@ -1,25 +1,62 @@
 import { websiteIsOpened } from "./initialDisplay";
 
-describe("fetched weather data is displayed correctly in the app", () => {
+describe("correctly fetches and displays weather data", () => {
 
-    it("correctly displays fetched weather data from Visual API", () => {
+    it("fetches weather data from Visual API", () => {
+        const lat = '30';
+        const lon = '34';
 
+        cy.intercept(
+            {
+                method: 'GET',
+                url: `https://weather.visualcrossing.com/**`,
+            },
+            [{ fixture: 'visualCrossing.json' }]
+        ).as('getAPIData')
+
+        submitData(lat, lon);
+        cy.wait('@getAPIData');
+
+    })
+
+    it("fetches weather data from Open Weather API", () => {
+
+
+        cy.intercept(
+            {
+                method: 'GET',
+                url: `https://api.openweathermap.org/**`,
+            },
+            [{ fixture: 'visualCrossing.json' }]
+        ).as('getOpenAPIData')
+        websiteIsOpened();
+        cy.get('input#lat').type('30');
+        cy.get('input#lon').type('34');
+        cy.get('button#submit').click();
+        cy.wait('@getOpenAPIData');
+
+    })
+
+    it("correctly displays weather data", () => {
         const lat = '30';
         const lon = '34';
 
         submitData(lat, lon);
 
-        const staticResponse = {
-            temperature: 24.3,
-            pressure: 1011,
-            humidity: 20
-        }
+        cy.intercept(
+            {
+                method: 'GET',
+                url: `https://weather.visualcrossing.com/**`,
+            },
+            [{ fixture: 'visualCrossing.json' }]
+        ).as('getAPIData')
 
-        cy.intercept(`/https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat}%2C${lon}?unitGroup=metric&include=current&key=${process.env.REACT_APP_VISUAL_KEY}&contentType=json`, staticResponse)
-
-        displaysTemperature(staticResponse.temperature);
-        displaysPressure(staticResponse.pressure);
-        displaysHumidity(staticResponse.humidity);
+        cy.get('#pressure').should('be.visible');
+        cy.get('#pressure').should('not.be.empty');
+        cy.get('#temperature').should('be.visible');
+        cy.get('#temperature').should('not.be.empty');
+        cy.get('#humidity').should('be.visible');
+        cy.get('#humidity').should('not.be.empty');
     })
 });
 
