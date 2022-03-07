@@ -25,6 +25,6 @@ describe("initial display of HTML structure and data", () => {
   });
 });
 
-function websiteIsOpened() {
+export function websiteIsOpened() {
   cy.visit("http://localhost:3000");
 }
