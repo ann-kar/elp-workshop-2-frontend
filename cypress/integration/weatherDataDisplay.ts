@@ -30,18 +30,10 @@ describe("correctly fetches and displays weather data", () => {
         cy.wait('@getOpenAPIData');
     })
 
-    it("correctly displays weather data", () => {
+    it("correctly displays fetched weather data", () => {
         const lat = '30';
         const lon = '34';
         submitData(lat, lon);
-        cy.intercept(
-            {
-                method: 'GET',
-                url: `https://weather.visualcrossing.com/**`,
-            },
-            [{ fixture: 'visualCrossing.json' }]
-        ).as('getAPIData')
-
         cy.get('#pressure').should('be.visible');
         cy.get('#pressure').should('not.be.empty');
         cy.get('#temperature').should('be.visible');
