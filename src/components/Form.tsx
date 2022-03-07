@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
 
 import { APITypeInput, CoordinatesInput, Button } from "./atoms/";
-import { Api, IFormData, IStateFormData } from '../App';
+import { Api, IStateFormData } from '../App';
 import { helperFunctions } from '../helpers/helperFunctions';
 
 interface FormProps {
     setFormData: React.Dispatch<React.SetStateAction<IStateFormData | null>>
+}
+
+interface IFormData {
+    lat: { value: number };
+    lon: { value: number };
+    api: { value: Api };
 }
 
 export const Form = ({ setFormData }: FormProps) => {
